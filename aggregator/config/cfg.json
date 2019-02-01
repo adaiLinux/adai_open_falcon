@@ -13,8 +13,8 @@
     "api": {
         "connect_timeout": 500,
         "request_timeout": 2000,
-        "plus_api": "http://127.0.0.1:8080",
-        "plus_api_token": "default-token-used-in-server-side",
-        "push_api": "http://127.0.0.1:1988/v1/push"
+        "plus_api": "http://127.0.0.1:8080", //falcon-plus api模块的运行地址
+        "plus_api_token": "default-token-used-in-server-side", //和falcon-plus api 模块交互的认证token
+        "push_api": "http://127.0.0.1:1988/v1/push" //push数据的http接口，这是agent提供的接口
     }
 }

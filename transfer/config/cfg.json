@@ -1,33 +1,33 @@
 {
-    "debug": false,
-    "minStep": 30,
+    "debug": false, //true/false, 如果为true，日志中会打印debug信息
+    "minStep": 30, //允许上报的数据最小间隔，默认为30秒
     "http": {
-        "enabled": true,
-        "listen": "0.0.0.0:6060"
+        "enabled": true, //表示是否开启该http端口，该端口为控制端口，主要用来对transfer发送控制命令、统计命令、debug命令等
+        "listen": "0.0.0.0:6060" //表示监听的http端口，下文中同
     },
     "rpc": {
-        "enabled": true,
+        "enabled": true, //表示是否开启该jsonrpc数据接收端口, Agent发送数据使用的就是该端口
         "listen": "0.0.0.0:8433"
     },
     "socket": {
-        "enabled": true,
+        "enabled": true, //表示是否开启该telnet方式的数据接收端口，这是为了方便用户一行行的发送数据给transfer，即将被废弃,请避免使用
         "listen": "0.0.0.0:4444",
         "timeout": 3600
     },
     "judge": {
-        "enabled": true,
-        "batch": 200,
-        "connTimeout": 1000,
-        "callTimeout": 5000,
-        "maxConns": 32,
-        "maxIdle": 32,
-        "replicas": 500,
+        "enabled": true, //表示是否开启向judge发送数据
+        "batch": 200, //数据转发的批量大小，可以加快发送速度，建议保持默认值
+        "connTimeout": 1000, //单位是毫秒，与后端建立连接的超时时间，可以根据网络质量微调，建议保持默认
+        "callTimeout": 5000, //单位是毫秒，发送数据给后端的超时时间，可以根据网络质量微调，建议保持默认
+        "maxConns": 32, //连接池相关配置，最大连接数，建议保持默认
+        "maxIdle": 32, //连接池相关配置，最大空闲连接数，建议保持默认
+        "replicas": 500, //这是一致性hash算法需要的节点副本数量，建议不要变更，保持默认即可
         "cluster": {
-            "judge-00" : "0.0.0.0:6080"
+            "judge-00" : "0.0.0.0:6080"  //key-value形式的字典，表示后端的judge列表，其中key代表后端judge名字，value代表的是具体的 ip:port
         }
     },
     "graph": {
-        "enabled": true,
+        "enabled": true, //表示是否开启向graph发送数据
         "batch": 200,
         "connTimeout": 1000,
         "callTimeout": 5000,
@@ -39,13 +39,13 @@
         }
     },
     "tsdb": {
-        "enabled": false,
+        "enabled": false, //表示是否开启向open tsdb发送数据
         "batch": 200,
         "connTimeout": 1000,
         "callTimeout": 5000,
         "maxConns": 32,
         "maxIdle": 32,
-        "retry": 3,
-        "address": "127.0.0.1:8088"
+        "retry": 3, //连接后端的重试次数和发送数据的重试次数
+        "address": "127.0.0.1:8088" //tsdb地址或者tsdb集群vip地址, 通过tcp连接tsdb.
     }
 }

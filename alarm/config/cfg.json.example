@@ -1,5 +1,5 @@
 {
-    "log_level": "info",
+    "log_level": "debug",
     "http": {
         "enabled": true,
         "listen": "0.0.0.0:9912"
@@ -23,12 +23,13 @@
         "userMailQueue": "/queue/user/mail"
     },
     "api": {
-        "im": "http://127.0.0.1:10086/wechat",  //微信发送网关地址
+        "im": "http://127.0.0.1:10086/wechat",
         "sms": "http://127.0.0.1:10086/sms",  //短信发送网关地址
         "mail": "http://127.0.0.1:10086/mail", //邮件发送网关地址
         "dashboard": "http://127.0.0.1:8081",  //dashboard模块的运行地址
         "plus_api":"http://127.0.0.1:8080",   //falcon-plus api模块的运行地址
         "plus_api_token": "default-token-used-in-server-side" //用于和falcon-plus api模块服务端之间的通信认证token
+        "http": "https://devops.chunyu.club/publisher/channel/falcon/"  //自定义接口，将告警集中到运维中心处理
     },
     "falcon_portal": {
         "addr": "root:123456@tcp(192.168.228.129:3306)/alarms?charset=utf8&loc=Asia%2FChongqing",
@@ -36,9 +37,10 @@
         "max": 100
     },
     "worker": {
-        "im": 10,
-        "sms": 10,
+        "im": 0,
+        "sms": 0,
         "mail": 50
+        "http": 20
     },
     "housekeeper": {
         "event_retention_days": 7,  //报警历史信息的保留天数

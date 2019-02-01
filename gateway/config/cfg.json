@@ -14,15 +14,15 @@
         "timeout": 3600
     },
     "transfer": {
-        "enabled": true,
-        "batch": 200,
-        "retry": 1,
-        "connTimeout": 1000,
-        "callTimeout": 5000,
-        "maxConns": 32,
-        "maxIdle": 32,
-        "cluster": {
-            "t1":"0.0.0.0:8433"
+        "enabled": true, //true/false, 表示是否开启向tranfser转发数据
+        "batch": 200, //数据转发的批量大小，可以加快发送速度，建议保持默认值
+        "retry": 2, //重试次数，默认1、不重试
+        "connTimeout": 1000, //毫秒，与后端建立连接的超时时间，可以根据网络质量微调，建议保持默认
+        "callTimeout": 5000, //毫秒，发送数据给后端的超时时间，可以根据网络质量微调，建议保持默认
+        "maxConns": 32, //连接池相关配置，最大连接数，建议保持默认
+        "maxIdle": 32, //连接池相关配置，最大空闲连接数，建议保持默认
+        "cluster": { //transfer服务器集群，支持多条记录
+            "t1": "127.0.0.1:8433" //一个transfer实例，形如"node":"$hostname:$port"
         }
     }
 }
