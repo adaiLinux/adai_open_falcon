@@ -1,0 +1,13 @@
+{
+    "debug": false,
+    "database": "root:123456@tcp(192.168.228.129:3306)/falcon_portal?loc=Local&parseTime=true",
+    "hosts": "",
+    "maxConns": 20,
+    "maxIdle": 15,
+    "listen": ":6030",
+    "trustable": [""],
+    "http": {
+        "enabled": true,
+        "listen": "0.0.0.0:6031"
+    }
+}
